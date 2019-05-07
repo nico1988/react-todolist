@@ -1,6 +1,7 @@
 import React, { Component, Fragment} from 'react';
 // import Timer from './Timer'
 import "../style.css"
+import TodoItem from './TodoItem'
 class TodoList extends Component{
     // eslint-disable-next-line no-useless-constructor
     constructor(props){
@@ -13,6 +14,7 @@ class TodoList extends Component{
     render() {
         return (
             <Fragment>
+                <TodoItem content={"nico"}/>
                 <label htmlFor="insertArea">输入内容</label>
                 <div>
                     <input
@@ -24,12 +26,17 @@ class TodoList extends Component{
                     {
                         this.state.list.map((item,index)=>{
                             return (
-                                <li 
-                                    key={index}
-                                    onClick={this.handleItemClick.bind(this,index)}
-                                    dangerouslySetInnerHTML={{__html: item}}
-                                >
-                                </li>
+                                <Fragment>
+                                    <TodoItem
+                                        handleItemClick={this.handleItemClick.bind(this)} // bind this
+                                        content={item} index={index}/>
+                                </Fragment>
+                                // <li
+                                //     key={index}
+                                //     onClick={this.handleItemClick.bind(this,index)}
+                                //     dangerouslySetInnerHTML={{__html: item}}
+                                // >
+                                // </li>
                             )
                         })
                     }

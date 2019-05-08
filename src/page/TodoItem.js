@@ -2,18 +2,17 @@ import React,{ Component} from 'react';
 class TodoItem extends Component {
     constructor(props){
         super(props)
-        this.handleItemClick=this.handleItemClick.bind(this)
+        this.handleItemClick=this.handleItemClick.bind(this) // bind的自身组件
     }
     render(){
-        return <li onClick={this.handleItemClick.bind(this)}>{this.props.content}</li>
+        const {content} = this.props;
+        return (
+            <li onClick={this.handleItemClick.bind(this)}>{content}</li>
+        )
     }
     handleItemClick(){
-        this.props.handleItemClick(this.props.index)
-        // const list = [...this.state.list]
-        // list.splice(index,1)
-        // this.setState({
-        //     list: list
-        // })
+        const { handleItemClick,index } = this.props; // 解构赋值
+        handleItemClick(index)
     }
 }
-export default TodoItem;
+export default TodoItem; 

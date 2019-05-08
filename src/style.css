@@ -1,3 +1,7 @@
 .input{
     border: 1px solid red;
 }
+li:hover{
+    background: red;
+    cursor: pointer;
+}
